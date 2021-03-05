@@ -4,17 +4,37 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float spawnTime = 6f;
-    [SerializeField] GameObject enemy;
+    [SerializeField] float startSpawnTime = 6f;
+    [SerializeField] GameObject enemy = null;
 
     private Vector2 spawnPosition;
 
     private int corner = 0;
 
+    private float timer = 0f;
+
+    private int totalEnemies = 0;
+
+    private float currentSpawnTime;
+    
+    private bool decreasedSpawnTimeOnLast = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        currentSpawnTime = startSpawnTime;
+    }
+
+    void Update() {
+        timer += Time.deltaTime;
+        if (timer > currentSpawnTime){
+            Spawn();
+            timer = 0f;
+            if (totalEnemies % 10 == 0){
+                currentSpawnTime -= 0.5f;
+                currentSpawnTime = Mathf.Clamp(currentSpawnTime, 0.5f, startSpawnTime);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -32,6 +52,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Instantiate(enemy, spawnPosition, Quaternion.identity);
+
+        totalEnemies++;
 
         if (corner == 3) {
             corner = 0;
