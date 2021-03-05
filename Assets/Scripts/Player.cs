@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -34,5 +35,12 @@ public class Player : MonoBehaviour
             newVelocity.x -= moveSpeed;
         }
         player.velocity = newVelocity;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision){
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.name.Contains("Enemy")){
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

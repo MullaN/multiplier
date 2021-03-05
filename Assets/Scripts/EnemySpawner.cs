@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] float spawnTime = 6f;
+    [SerializeField] GameObject enemy;
 
     private Vector2 spawnPosition;
 
@@ -30,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
             spawnPosition.y *= -1;
         }
 
-        Instantiate(FindObjectOfType<Enemy>(), spawnPosition, Quaternion.identity);
+        Instantiate(enemy, spawnPosition, Quaternion.identity);
 
         if (corner == 3) {
             corner = 0;

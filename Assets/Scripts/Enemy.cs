@@ -17,4 +17,8 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, FindObjectOfType<Player>().transform.position, startSpeed * Time.deltaTime);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision){
+
+    }
 }
