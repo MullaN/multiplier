@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float startSpawnTime = 6f;
+    [SerializeField] float startSpawnTime = 3f;
     [SerializeField] GameObject enemy = null;
 
     private Vector2 spawnPosition;
@@ -30,9 +30,9 @@ public class EnemySpawner : MonoBehaviour
         if (timer > currentSpawnTime){
             Spawn();
             timer = 0f;
-            if (totalEnemies % 10 == 0){
-                currentSpawnTime -= 0.5f;
-                currentSpawnTime = Mathf.Clamp(currentSpawnTime, 0.5f, startSpawnTime);
+            if (totalEnemies % 10 == 0 && currentSpawnTime > 0.4f){
+                currentSpawnTime *= 0.9f;
+                currentSpawnTime = Mathf.Clamp(currentSpawnTime, 0.4f, startSpawnTime);
             }
         }
     }
