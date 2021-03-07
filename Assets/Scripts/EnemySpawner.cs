@@ -17,15 +17,37 @@ public class EnemySpawner : MonoBehaviour
 
     private float currentSpawnTime;
     
-    private bool decreasedSpawnTimeOnLast = false;
+    private Vector2[] spawnPositions = new Vector2[5];
+
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         currentSpawnTime = startSpawnTime;
+        spawnPositions[0].x = 9.4338f;
+        spawnPositions[0].y = 4.5158f;
+        spawnPositions[1].x = 9.259f;
+        spawnPositions[1].y = 4.623309f;
+        spawnPositions[2].x = 9.461791f;
+        spawnPositions[2].y = 4.7141f;
+        spawnPositions[3].x = 9.453879f;
+        spawnPositions[3].y = 4.9114f;
+        spawnPositions[4].x = 9.6567f;
+        spawnPositions[4].y = 4.805287f;
     }
 
     void Update() {
+        if (player.transform.position.x >= 0 && player.transform.position.y <= 0){
+            corner = 0;
+        } else if (player.transform.position.x >= 0 && player.transform.position.y >= 0){
+            corner = 1;
+        } else if (player.transform.position.x <= 0 && player.transform.position.y <= 0){
+            corner = 2;
+        } else {
+            corner = 3;
+        }
         timer += Time.deltaTime;
         if (timer > currentSpawnTime){
             Spawn();
@@ -40,25 +62,21 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Spawn()
     {
-        spawnPosition.x = 9f;
-        spawnPosition.y = 4f;
+        for (int i = 0; i < 5; i++){
+            spawnPosition.x = spawnPositions[i].x;
+            spawnPosition.y = spawnPositions[i].y;
 
-        if (corner < 2){
-            spawnPosition.x *= -1;
+            if (corner < 2){
+                spawnPosition.x *= -1;
+            }
+
+            if (corner % 2 > 0){
+                spawnPosition.y *= -1;
+            }
+
+            Instantiate(enemy, spawnPosition, Quaternion.identity);
         }
-
-        if (corner % 2 > 0){
-            spawnPosition.y *= -1;
-        }
-
-        Instantiate(enemy, spawnPosition, Quaternion.identity);
 
         totalEnemies++;
-
-        if (corner == 3) {
-            corner = 0;
-        } else {
-            corner++;
-        }
     }
 }

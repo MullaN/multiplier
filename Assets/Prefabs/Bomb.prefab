@@ -94,6 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335bfe5a331c68040a6a7dbe7f1dc5c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToExplode: 1.5
+  timeToExplode: 0.5
   explosion: {fileID: 2581351530081848367, guid: eeee5e1455d3bbf4dbb1064038192220,
     type: 3}
