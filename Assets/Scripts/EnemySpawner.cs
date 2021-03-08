@@ -39,17 +39,17 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void Update() {
-        if (player.transform.position.x >= 0 && player.transform.position.y <= 0){
-            corner = 0;
-        } else if (player.transform.position.x >= 0 && player.transform.position.y >= 0){
-            corner = 1;
-        } else if (player.transform.position.x <= 0 && player.transform.position.y <= 0){
-            corner = 2;
-        } else {
-            corner = 3;
-        }
         timer += Time.deltaTime;
         if (timer > currentSpawnTime){
+            if (player.transform.position.x >= 0 && player.transform.position.y <= 0){
+                corner = 0;
+            } else if (player.transform.position.x >= 0 && player.transform.position.y >= 0){
+                corner = 1;
+            } else if (player.transform.position.x <= 0 && player.transform.position.y <= 0){
+                corner = 2;
+            } else {
+                corner = 3;
+            }
             Spawn();
             timer = 0f;
             if (totalEnemies % 10 == 0 && currentSpawnTime > 0.4f){
