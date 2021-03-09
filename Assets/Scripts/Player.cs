@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = .1f;
-    [SerializeField] GameObject bomb;
-    [SerializeField] GameObject explosion;
+
     // Start is called before the first frame update
 
     Rigidbody2D player;
@@ -20,7 +19,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
-        DropBomb();
     }
 
     private void Movement(){
@@ -38,13 +36,6 @@ public class Player : MonoBehaviour
             newVelocity.x -= moveSpeed;
         }
         player.velocity = newVelocity;
-    }
-
-    private void DropBomb(){
-        if (Input.GetKeyDown(KeyCode.Space)){
-            // Instantiate(bomb, transform.position, Quaternion.identity);
-            Instantiate(explosion, transform.position, Quaternion.identity);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
