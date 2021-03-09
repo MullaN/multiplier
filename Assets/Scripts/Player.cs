@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = .1f;
 
+    [SerializeField] AudioClip deathSound;
+
     // Start is called before the first frame update
 
     Rigidbody2D player;
@@ -40,7 +42,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.name.Contains("Enemy")){
-            SceneManager.LoadScene("GameOver");
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
+            Time.timeScale = 0f;
+            //SceneManager.LoadScene("GameOver");
         }
     }
 }
