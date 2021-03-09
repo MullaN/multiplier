@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = .1f;
     [SerializeField] GameObject bomb;
+    [SerializeField] GameObject explosion;
     // Start is called before the first frame update
 
     Rigidbody2D player;
@@ -41,12 +42,13 @@ public class Player : MonoBehaviour
 
     private void DropBomb(){
         if (Input.GetKeyDown(KeyCode.Space)){
-            Instantiate(bomb, transform.position, Quaternion.identity);
+            // Instantiate(bomb, transform.position, Quaternion.identity);
+            Instantiate(explosion, transform.position, Quaternion.identity);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        if (collision.gameObject.name.Contains("Enemy") || collision.gameObject.name.Contains("Explosion")){
+        if (collision.gameObject.name.Contains("Enemy")){
             SceneManager.LoadScene("GameOver");
         }
     }
