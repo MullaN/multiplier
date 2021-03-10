@@ -9,11 +9,15 @@ public class Player : MonoBehaviour
 
     [SerializeField] AudioClip deathSound;
 
+    Scoring scoring;
+
     // Start is called before the first frame update
 
     Rigidbody2D player;
     void Start()
     {
+        Time.timeScale = 1f;
+        scoring = FindObjectOfType<Scoring>();
         player = GetComponent<Rigidbody2D>();
     }
 
@@ -42,9 +46,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.name.Contains("Enemy")){
-            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
-            Time.timeScale = 0f;
-            //SceneManager.LoadScene("GameOver");
+            scoring.GameOver();
         }
     }
 }
