@@ -13,7 +13,7 @@ public class CreditsControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentButtonText = "CONTROLS";
+        currentButtonText = "CREDITS";
     }
 
     public void TextChange(){
@@ -41,5 +41,9 @@ Run into x1,x2,x3 to create an explosion to kill red enemies";
             currentButtonText = "CREDITS";
             buttonText.text = "CREDITS";
         }
+    }
+
+    public void QuitGame(){
+        Application.Quit();
     }
 }

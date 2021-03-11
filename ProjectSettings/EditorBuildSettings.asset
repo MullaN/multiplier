@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: c371838275cf14eb7a3af1a995914d3d
   - enabled: 1
+    path: Assets/Scenes/RulesSplash.unity
+    guid: 0beb2fcd5f67f4dc493bf6381f074944
+  - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 69935c83083304bd5be5c14b0aef2c4d
   - enabled: 1

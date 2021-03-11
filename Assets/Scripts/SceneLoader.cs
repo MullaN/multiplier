@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadGameScreen(){
-        SceneManager.LoadScene("MainGame");
+    public void LoadRulesScreen(){
+        SceneManager.LoadScene("RulesSplash");
     }
 
     public void LoadStartScreen(){
