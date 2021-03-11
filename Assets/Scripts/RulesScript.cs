@@ -22,7 +22,7 @@ public class RulesScript : MonoBehaviour
         if (timer > 6f){
             SceneManager.LoadScene("MainGame");
         } else if (timer > 2f){
-            rulesText.text = @"Run into 1x, 2x, or 3x to kill red enemies.
+            rulesText.text = @"Run into 1x, 2x, or 3x to spawn an explosion that kills red enemies.
 Points per enemy:
 1x: 1 point
 2x: 2 points
