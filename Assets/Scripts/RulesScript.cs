@@ -18,6 +18,9 @@ public class RulesScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space)){
+            SceneManager.LoadScene("MainGame");
+        }
         timer += Time.deltaTime;
         if (timer > 6f){
             SceneManager.LoadScene("MainGame");
